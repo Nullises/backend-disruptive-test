@@ -10,10 +10,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 connectDB();
 
 // Routes
-/*import { lists } from "./features/lists";
-import { tasks } from "./features/tasks";
-app.use("/lists", lists);
-app.use("/tasks", tasks);*/
+/*import { themes } from "./features/themes";
+import { categories } from "./features/categories";
+import { content } from "./features/content";
+import { users} from "./features/users";
+
+app.use("/themes", themes);
+app.use("/categories", categories);
+app.use("/content", content);
+app.use("/users", users);
+*/
 
 app.get("/", (_: Request, res: Response) => {
   res.send("Express + TypeScript Server!");

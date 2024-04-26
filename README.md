@@ -9,9 +9,10 @@ If you are in Windows
 2. Clone this repo and navigate
    `git clone https://github.com/Nullises/backend-disruptive-test.git`
    `cd  backend-disruptive-test`
-3. Install dependencies
+3. Ask for .env file
+4. Install dependencies
    `npm i`
-4. Run (Development)
+5. Run (Development)
    `npm run dev`
-5. Build for production
+6. Build for production
    `npm run build`
