@@ -1,6 +1,6 @@
 import Themes from "./themes.model";
 import { usersRoles } from "../../enums/users.enum";
-import { get as usersGet } from "../users/users.service";
+import { getByAccountId as usersGet } from "../users/users.service";
 
 async function getAll() {
   return Themes.find();
@@ -62,7 +62,7 @@ async function remove(id, adminAccountID) {
   try {
     const existingUser = await usersGet(adminAccountID);
     if (existingUser && existingUser.role == usersRoles.ADMIN) {
-      return Themes.findOneAndDelete({ _id: id });
+      return Themes.findByIdAndDelete(id);
     } else {
       throw new Error("Invalid Role");
     }

@@ -1,6 +1,6 @@
 import Content from "./content.model";
 import { usersRoles } from "../../enums/users.enum";
-import { get as usersGet } from "../users/users.service";
+import { getByAccountId as usersGet } from "../users/users.service";
 
 async function getAll() {
   return Content.find();
@@ -73,7 +73,7 @@ async function remove(id, accountID) {
       (existingUser.role == usersRoles.ADMIN ||
         existingUser.role == usersRoles.WRITTER)
     ) {
-      return Content.findOneAndDelete({ _id: id });
+      return Content.findByIdAndDelete(id);
     } else {
       throw new Error("Invalid Role");
     }

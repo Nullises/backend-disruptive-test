@@ -8,6 +8,17 @@ async function getAll() {
 async function get(id) {
   try {
     if (id) {
+      const user = await Users.findOne({ _id: id });
+      return user;
+    }
+  } catch (error) {
+    throw new Error("User doesn't exist");
+  }
+}
+
+async function getByAccountId(id) {
+  try {
+    if (id) {
       const user = await Users.findOne({ accountID: id });
       return user;
     }
@@ -66,7 +77,7 @@ async function remove(id, adminAccountId) {
   try {
     const existingUser = await get(adminAccountId);
     if (existingUser && existingUser.role == usersRoles.ADMIN) {
-      return Users.findOneAndDelete({ _id: id });
+      return Users.findByIdAndDelete(id);
     } else {
       throw new Error("Invalid Role");
     }
@@ -75,4 +86,4 @@ async function remove(id, adminAccountId) {
   }
 }
 
-export { getAll, get, create, update, remove };
+export { getAll, get, getByAccountId, create, update, remove };

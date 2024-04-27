@@ -21,7 +21,13 @@ async function get(req: Request, res: Response, next: NextFunction) {
 
 async function create(req: Request, res: Response, next: NextFunction) {
   try {
-    res.json(await categoriesService.create(req.body));
+    const data = {
+      name: req.body.name,
+      writePermission: req.body.writePermission || false,
+      readPermission: req.body.readPermission || false,
+      adminAccountId: req.body.adminAccountId,
+    };
+    res.json(await categoriesService.create(data));
   } catch (err) {
     console.error(`Error while creating the category`, err.message);
     next(err);
@@ -30,7 +36,13 @@ async function create(req: Request, res: Response, next: NextFunction) {
 
 async function update(req: Request, res: Response, next: NextFunction) {
   try {
-    res.json(await categoriesService.update(req.params.id, req.body));
+    const data = {
+      name: req.body.name,
+      writePermission: req.body.writePermission || false,
+      readPermission: req.body.readPermission || false,
+      adminAccountId: req.body.adminAccountId,
+    };
+    res.json(await categoriesService.update(req.params.id, data));
   } catch (err) {
     console.error(`Error while updating the category`, err.message);
     next(err);

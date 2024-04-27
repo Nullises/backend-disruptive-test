@@ -1,15 +1,15 @@
 import Categories from "./categories.model";
 import { usersRoles } from "../../enums/users.enum";
-import { get as usersGet } from "../users/users.service";
+import { getByAccountId as usersGet } from "../users/users.service";
 import { categoriesAllowed } from "../../enums/categories.enum";
 
 async function getAll() {
   return Categories.find();
 }
 
-async function get(id) {
+async function get(name) {
   try {
-    if (id) {
+    if (name) {
       const category = await Categories.findOne({ name: name });
       return category;
     }
@@ -37,8 +37,8 @@ async function create(data) {
         ) {
           const categoryData = {
             name: data.name,
-            writePermission: data.writePermission || false,
-            readPermission: data.readPermission || false,
+            writePermission: data.writePermission,
+            readPermission: data.readPermission,
             adminAccountId: data.adminAccountId,
           };
 
@@ -80,7 +80,7 @@ async function remove(id, accountID) {
   try {
     const existingUser = await usersGet(accountID);
     if (existingUser && existingUser.role == usersRoles.ADMIN) {
-      return Categories.findOneAndDelete({ _id: id });
+      return Categories.findByIdAndDelete(id);
     } else {
       throw new Error("Invalid Role");
     }
