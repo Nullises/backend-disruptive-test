@@ -20,13 +20,16 @@ redisClientSubscriber.subscribe("content-updated");
 redisClientSubscriber.subscribe("content-deleted");
 
 // Create & Start the WebSocket server
-const server = new WebSocket.Server({ port: WEB_SOCKET_PORT });
+const server = new WebSocket.Server({ port: WEB_SOCKET_PORT }, () => {
+  console.log(
+    `⚡️[server]: WebSocket Server is running at ${HOST}:${WEB_SOCKET_PORT}`
+  );
+});
 
 // Register event for client connection
 server.on("connection", function connection(ws) {
   // broadcast on web socket when receving a Redis PUB/SUB Event
   redisClientSubscriber.on("message", function (channel, message) {
-    console.log(message);
     ws.send(message);
   });
 });
