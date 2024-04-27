@@ -1,6 +1,7 @@
 import Content from "./content.model";
 import { usersRoles } from "../../enums/users.enum";
 import { getByAccountId as usersGet } from "../users/users.service";
+import { redisClientPublisher } from "../../config/redis";
 
 async function getAll() {
   return Content.find();
@@ -39,7 +40,18 @@ async function create(data) {
           userAccountId: data.userAccountId,
         };
 
-        return new Content(contentData).save();
+        const contentSaved = new Content(contentData).save();
+        const contentSavedData = await contentSaved;
+
+        const getAllContents = await getAll();
+
+        const publisher = redisClientPublisher;
+        await publisher.publish(
+          "content-updated",
+          JSON.stringify(getAllContents)
+        );
+
+        return contentSavedData;
       } else {
         throw new Error("User not authorized to create Content");
       }
@@ -56,7 +68,17 @@ async function update(id, data) {
       getUser &&
       (getUser.role == usersRoles.ADMIN || getUser.role === usersRoles.WRITTER)
     ) {
-      return Content.findOneAndUpdate({ _id: id }, data);
+      const contentUpdated = Content.findOneAndUpdate({ _id: id }, data);
+      const contentUpdatedData = await contentUpdated;
+      const getAllContents = await getAll();
+
+      const publisher = redisClientPublisher;
+      await publisher.publish(
+        "content-updated",
+        JSON.stringify(getAllContents)
+      );
+
+      return contentUpdatedData;
     } else {
       throw new Error("User not authorized to update Content");
     }
@@ -73,7 +95,17 @@ async function remove(id, accountID) {
       (existingUser.role == usersRoles.ADMIN ||
         existingUser.role == usersRoles.WRITTER)
     ) {
-      return Content.findByIdAndDelete(id);
+      const contentDeleted = Content.findByIdAndDelete(id);
+      const contentDeletedData = await contentDeleted;
+      const getAllContents = await getAll();
+
+      const publisher = redisClientPublisher;
+      await publisher.publish(
+        "content-updated",
+        JSON.stringify(getAllContents)
+      );
+
+      return contentDeletedData;
     } else {
       throw new Error("Invalid Role");
     }
