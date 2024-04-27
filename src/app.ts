@@ -67,7 +67,7 @@ app.use(
 
 // CORS
 const corsOptions = {
-  origin: `${FRONT_HOST}`, // Specify the allowed origin(s)
+  origin: `${HOST}`, // Specify the allowed origin(s)
   methods: "GET, POST, PUT, DELETE", // Specify allowed HTTP methods
   allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
 };
