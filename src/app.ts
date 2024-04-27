@@ -3,6 +3,10 @@ import connectDB from "./config/mongo";
 import bodyParser from "body-parser";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import dotenv from "dotenv";
+dotenv.config();
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
 
 const app: Express = express();
 
@@ -38,7 +42,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: `${HOST}:${PORT}`,
       },
     ],
   },
