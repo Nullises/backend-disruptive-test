@@ -4,7 +4,7 @@ import { getByAccountId as usersGet } from "../users/users.service";
 import { redisClientPublisher } from "../../config/redis";
 
 async function getAll() {
-  return Content.find();
+  return Content.find().sort({ _id: -1 });
 }
 
 async function get(id) {
