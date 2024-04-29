@@ -5,7 +5,6 @@ async function getAll(req: Request, res: Response, next: NextFunction) {
   try {
     res.json(await themesService.getAll());
   } catch (err) {
-    console.error(`Error while getting the themes`, err.message);
     next(err);
   }
 }

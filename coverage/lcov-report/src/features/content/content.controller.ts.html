@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.76% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/26</span>
+                <span class='fraction'>24/26</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/22</span>
+                <span class='fraction'>20/22</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -127,40 +127,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,41 +177,41 @@ async function getAll(req: Request, res: Response, next: NextFunction) {
   }
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >get(</span>req: Request, res: Response, next: NextFunction) {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    res.json(await contentService.get(req.params.id));</span>
+async function get(req: Request, res: Response, next: NextFunction) {
+  try {
+    res.json(await contentService.get(req.params.id));
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    console.error(`Error while getting the content`, err.message);</span>
-<span class="cstat-no" title="statement not covered" >    next(err);</span>
+    console.error(`Error while getting the content`, err.message);
+    next(err);
   }
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >create(</span>req: Request, res: Response, next: NextFunction) {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    res.json(await contentService.create(req.body));</span>
+async function create(req: Request, res: Response, next: NextFunction) {
+  try {
+    res.json(await contentService.create(req.body));
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    console.error(`Error while creating the content`, err.message);</span>
-<span class="cstat-no" title="statement not covered" >    next(err);</span>
+    console.error(`Error while creating the content`, err.message);
+    next(err);
   }
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >update(</span>req: Request, res: Response, next: NextFunction) {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    res.json(await contentService.update(req.params.id, req.body));</span>
+async function update(req: Request, res: Response, next: NextFunction) {
+  try {
+    res.json(await contentService.update(req.params.id, req.body));
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    console.error(`Error while updating the content`, err.message);</span>
-<span class="cstat-no" title="statement not covered" >    next(err);</span>
+    console.error(`Error while updating the content`, err.message);
+    next(err);
   }
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >remove(</span>req: Request, res: Response, next: NextFunction) {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    res.json(</span>
+async function remove(req: Request, res: Response, next: NextFunction) {
+  try {
+    res.json(
       await contentService.remove(req.query.id, req.query.adminAccountId)
     );
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    console.error(`Error while deleting the content`, err.message);</span>
-<span class="cstat-no" title="statement not covered" >    next(err);</span>
+    console.error(`Error while deleting the content`, err.message);
+    next(err);
   }
 }
 &nbsp;
@@ -223,7 +223,7 @@ export { getAll, get, create, update, remove };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-29T21:22:03.969Z
+                at 2024-04-29T22:18:25.292Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

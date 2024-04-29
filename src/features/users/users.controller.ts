@@ -5,7 +5,6 @@ async function getAll(req: Request, res: Response, next: NextFunction) {
   try {
     res.json(await usersService.getAll());
   } catch (err) {
-    console.error(`Error while getting the users`, err.message);
     next(err);
   }
 }
@@ -14,7 +13,6 @@ async function get(req: Request, res: Response, next: NextFunction) {
   try {
     res.json(await usersService.get(req.params.id));
   } catch (err) {
-    console.error(`Error while getting the user`, err.message);
     next(err);
   }
 }

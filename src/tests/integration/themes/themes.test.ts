@@ -147,7 +147,7 @@ describe("DELETE /themes", () => {
 
     const response = await request(app).post("/themes").send(newTheme);
 
-    // DELETE CREATED USER
+    // DELETE CREATED THEME
     const responseDeleted = await request(app)
       .delete("/themes")
       .query({

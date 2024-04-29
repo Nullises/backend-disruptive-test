@@ -5,7 +5,6 @@ async function getAll(req: Request, res: Response, next: NextFunction) {
   try {
     res.json(await categoriesService.getAll());
   } catch (err) {
-    console.error(`Error while getting the categories`, err.message);
     next(err);
   }
 }
