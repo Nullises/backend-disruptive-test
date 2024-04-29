@@ -6,13 +6,16 @@ async function getAll() {
 }
 
 async function get(id) {
-  try {
-    if (id) {
-      const user = await Users.findOne({ _id: id });
-      return user;
-    }
-  } catch (error) {
-    throw new Error("User doesn't exist");
+  if (id) {
+    const user = await Users.findOne({ _id: id });
+    return user;
+  }
+}
+
+async function getByEmail(email) {
+  if (email) {
+    const user = await Users.findOne({ email: email });
+    return user;
   }
 }
 
@@ -31,7 +34,7 @@ async function create(data) {
   // Validate data
   try {
     if (data) {
-      const existingUser = await get(data.accountID);
+      const existingUser = await getByEmail(data.email);
       if (existingUser) throw new Error("User Already Created!");
       // validate exclusive roles
       if (
@@ -59,11 +62,8 @@ async function create(data) {
 
 async function update(id, data) {
   try {
-    if (
-      data.role == usersRoles.ADMIN ||
-      data.role == usersRoles.READER ||
-      data.role == usersRoles.WRITTER
-    ) {
+    const existingUser = await getByAccountId(data.adminAccountId);
+    if (existingUser && existingUser.role == usersRoles.ADMIN) {
       return Users.findOneAndUpdate({ _id: id }, data);
     } else {
       throw new Error("Invalid Role");
@@ -75,7 +75,7 @@ async function update(id, data) {
 
 async function remove(id, adminAccountId) {
   try {
-    const existingUser = await get(adminAccountId);
+    const existingUser = await getByAccountId(adminAccountId);
     if (existingUser && existingUser.role == usersRoles.ADMIN) {
       return Users.findByIdAndDelete(id);
     } else {

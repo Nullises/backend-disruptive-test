@@ -13,7 +13,8 @@
   "include": [
     "src/**/*.js", // Every js file inside src folder
     "src/**/*.ts", // Every ts file inside src folder
-    "server.ts"
+    "server.ts",
+    "src/jest.config.ts"
   ],
   "exclude": [
     "node_modules",

@@ -1,6 +1,5 @@
 import express, { Express, Request, Response } from "express";
 import connectDB from "./config/mongo";
-// import { connectRedis } from "./config/redis";
 import bodyParser from "body-parser";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
@@ -26,8 +25,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect MongoDB
 connectDB();
-// Connect to Redis
-// connectRedis();
 
 app.use("/users", users);
 app.use("/themes", themes);
@@ -67,7 +64,11 @@ app.use(
 
 // CORS
 const corsOptions = {
-  origin: `${HOST}`, // Specify the allowed origin(s)
+  origin: [
+    `${HOST}`,
+    `${FRONT_HOST}`,
+    "https://backend-disruptive-test-production.up.railway.app/",
+  ], // Specify the allowed origin(s)
   methods: "GET, POST, PUT, DELETE", // Specify allowed HTTP methods
   allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
 };

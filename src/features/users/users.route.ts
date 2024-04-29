@@ -110,11 +110,11 @@
  *       404:
  *         description: User don't found
  *   put:
- *    summary: Update the users by the id
+ *    summary: Update the users by the id (Must include adminAccountId in the Body)
  *    tags: [Users]
  *    parameters:
  *      - in: path
- *        name: id
+ *        id: id
  *        schema:
  *          type: string
  *        required: true

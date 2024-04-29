@@ -16,3 +16,10 @@ If you are in Windows
    `npm run dev`
 6. Build for production
    `npm run build`
+7. Test
+   `npm test`
+   Coverage
+   `npm test -- --coverage`
+8. Documentation
+   Local: `http://localhost:3000/api-docs`
+   Online: `https://backend-disruptive-test-production.up.railway.app/api-docs/`
