@@ -26,6 +26,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Connect MongoDB
 connectDB();
 
+// CORS
+const corsOptions = {
+  origin: [
+    `${HOST}`,
+    `http://localhost:3001`,
+    "https://backend-disruptive-test-production.up.railway.app/",
+  ], // Specify the allowed origin(s)
+  methods: "GET, POST, PUT, DELETE", // Specify allowed HTTP methods
+  allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
+};
+
+app.use(cors(corsOptions));
+
+// Routes
+
 app.use("/users", users);
 app.use("/themes", themes);
 app.use("/categories", categories);
@@ -61,19 +76,6 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(specs, { explorer: true })
 );
-
-// CORS
-const corsOptions = {
-  origin: [
-    `${HOST}`,
-    `${FRONT_HOST}`,
-    "https://backend-disruptive-test-production.up.railway.app/",
-  ], // Specify the allowed origin(s)
-  methods: "GET, POST, PUT, DELETE", // Specify allowed HTTP methods
-  allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
-};
-
-app.use(cors(corsOptions));
 
 app.get("/", (_: Request, res: Response) => {
   res.send("Express + TypeScript Server!");
