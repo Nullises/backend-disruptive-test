@@ -23,5 +23,5 @@ If you are in Windows
 8. Documentation
    Local: `http://localhost:3000/api-docs`
    Online: `https://backend-disruptive-test-production.up.railway.app/api-docs/`
-9. Run from Docker:
+9. Run from Docker (RECOMMENDED):
    `docker-compose up --build`
